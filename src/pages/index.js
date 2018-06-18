@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import PressStartScreen from '../components/homepage/pressStartScreen';
 import Home from '../components/homepage/home';
+import AppContext from '../context/appContext';
 
 const Context = {
   PRESS_START: 'PRESS_START',
@@ -17,6 +19,8 @@ class IndexPage extends Component {
    */
   constructor(props) {
     super(props);
+
+    console.log(props.data);
 
     this.state = {
       context: Context.PRESS_START,
@@ -39,14 +43,32 @@ class IndexPage extends Component {
     const { context } = this.state;
     return (
       <div>
-        {context === Context.PRESS_START &&
+
+        <AppContext.Provider value={{ ...this.props.data.site.siteMetadata }}>
+          {context === Context.PRESS_START &&
           <PressStartScreen handleContext={this.handleHomeContext} />}
-        {context === Context.HOME && <Home />}
+          {context === Context.HOME && <Home />}
+        </AppContext.Provider>
       </div>
     );
   }
 }
 
-IndexPage.propTypes = {};
+IndexPage.propTypes = {
+  data: PropTypes.object.isRequired,
+};
 
 export default IndexPage;
+
+export const query = graphql`
+  query IndexStoreQuery {
+    site {
+      siteMetadata {
+        title,
+        author,
+        description
+      }
+    }
+  }
+`;
+

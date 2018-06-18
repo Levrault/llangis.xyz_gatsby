@@ -1,6 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'llangis.xyz',
+    author: 'Luc-Frederic Langis',
+    description: 'hello',
   },
   plugins: ['gatsby-plugin-react-helmet'],
-}
+};
