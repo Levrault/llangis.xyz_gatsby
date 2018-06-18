@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar component should render with all his props 1`] = `
+<div
+  className="sc-bdVaJa dDJaVS"
+>
+  <img
+    alt="Luc-Frederic Langis"
+    className="sc-bwzfXH ctnOnP"
+    src="../img/avatar.png"
+  />
+</div>
+`;
