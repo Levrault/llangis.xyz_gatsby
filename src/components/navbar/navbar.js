@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Link from 'gatsby-link';
 import styled from 'styled-components';
-import NavbarItem from './NavbarItem';
 
 const Nav = styled.ul`
   font-family: Babyblocks;
@@ -9,24 +8,32 @@ const Nav = styled.ul`
   flex: 1;
   justify-content: center;
   padding: 0;
+  margin-left: 0;
   -list-style: none;
+`;
+
+const Item = styled.ul`
+  display: inline-block;
+  padding: 16px;
+  margin-left: 0;
+  text-transform: capitalize;
 `;
 
 /**
  * Main navbar
  * @param {object} items
  */
-const Navbar = ({ items }) => (
+const Navbar = () => (
   <Nav>
-    {Object.keys(items).map((key) => {
-      const item = items[key];
-      return <NavbarItem key={key} title={key} url={item} />;
-    })}
+    <Item>
+      <Link to="/">Home</Link>
+    </Item>
+    <Item>
+      <Link to="/post">Post</Link>
+    </Item>
   </Nav>
 );
 
-Navbar.propTypes = {
-  items: PropTypes.object.isRequired,
-};
+Navbar.propTypes = {};
 
 export default Navbar;

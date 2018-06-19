@@ -15,13 +15,13 @@ const Home = () => (
         <Avatar />
       </Fade>
       <AppContext.Consumer>
-        {({ author, description }) => (
+        {({ author }) => (
           <React.Fragment>
             <Fade duration={2}>
               <Text style={{ textAlign: 'center' }}>{author}</Text>
             </Fade>
             <Fade duration={3}>
-              <Text style={{ textAlign: 'center' }}>{description}</Text>
+              <Text style={{ textAlign: 'center' }}>Welcome to my website</Text>
             </Fade>
           </React.Fragment>
         )}

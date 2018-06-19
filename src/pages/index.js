@@ -20,8 +20,6 @@ class IndexPage extends Component {
   constructor(props) {
     super(props);
 
-    console.log(props.data);
-
     this.state = {
       context: Context.PRESS_START,
     };
@@ -65,8 +63,7 @@ export const query = graphql`
     site {
       siteMetadata {
         title,
-        author,
-        description
+        author
       }
     }
   }

@@ -14,7 +14,9 @@
     "global-require": 0,
     "require-jsdoc": ["error", { "require": { "FunctionDeclaration": true, "MethodDefinition": true, "ClassDeclaration": true, "ArrowFunctionExpression": true } }],
     "react/forbid-prop-types": [0, { "forbid": ["object"] }],
-    "import/no-extraneous-dependencies": false
+    "import/no-extraneous-dependencies": false,
+    "jsx-a11y/anchor-is-valid": false,
+    "react/no-danger": false
   },
   "globals": {
     "afterEach": false,
