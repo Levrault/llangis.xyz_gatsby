@@ -3,7 +3,6 @@ import Link from 'gatsby-link';
 import styled from 'styled-components';
 
 const Nav = styled.ul`
-  font-family: Babyblocks;
   display: flex;
   flex: 1;
   justify-content: center;
