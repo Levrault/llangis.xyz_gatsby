@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { injectGlobal } from 'styled-components';
-import Babyblocks from '../../assets/fonts/Babyblocks.ttf';
-
+import Babyblocks from './Babyblocks.ttf';
+import Favicon from './favicon.ico';
 import Navbar from '../components/navbar/navbar';
 
 /* eslint-disable no-unused-expressions */
@@ -31,7 +31,9 @@ const Layout = ({ children, data }) => (
         { name: 'description', content: 'Hi folks' },
         { name: 'keywords', content: 'blog, javascript, front-end, game design' },
       ]}
-    />
+    >
+      <link rel="icon" type="image/png" href={Favicon} sizes="16x16" />
+    </Helmet>
     <Navbar />
     <div>
       {children()}
