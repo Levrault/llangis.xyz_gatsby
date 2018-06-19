@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import imgSrc from '../../../assets/img/avatar.png';
+import imgSrc from './avatar.png';
 
 const Wrapper = styled.div`
   display: flex;

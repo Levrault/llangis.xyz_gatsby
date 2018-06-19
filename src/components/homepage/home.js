@@ -13,19 +13,18 @@ const Home = () => (
     <div>
       <Fade duration={1}>
         <Avatar />
-      </Fade>
-      <AppContext.Consumer>
-        {({ author }) => (
-          <React.Fragment>
-            <Fade duration={2}>
+        <AppContext.Consumer>
+          {({ author }) => (
+            <React.Fragment>
               <Text style={{ textAlign: 'center' }}>{author}</Text>
-            </Fade>
-            <Fade duration={3}>
-              <Text style={{ textAlign: 'center' }}>Welcome to my website</Text>
-            </Fade>
-          </React.Fragment>
-        )}
-      </AppContext.Consumer>
+            </React.Fragment>
+          )}
+        </AppContext.Consumer>
+        <Text style={{ textAlign: 'center' }}>Front end Engineer and amateur video game developper.</Text>
+        <Text>
+          You want to ear and learn about React or Unity or event Pixel art ? You are at the right place !
+        </Text>
+      </Fade>
     </div>
   </Page>
 );

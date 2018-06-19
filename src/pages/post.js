@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Link from 'gatsby-link';
 import PropsType from 'prop-types';
+import Helmet from 'react-helmet';
 import get from 'lodash/get';
 import Page from '../components/commons/page';
+import Fade from '../components/animations/fade';
 
 /**
  * Post index
@@ -10,21 +12,25 @@ import Page from '../components/commons/page';
  */
 const PostIndex = (data) => {
   const posts = get(data, 'data.allMarkdownRemark.edges');
+  const siteTitle = get(data, 'data.site.siteMetadata.title');
 
   return (
     <Page>
+      <Helmet title={`posts - ${siteTitle}`} />
       {posts.map(({ node }) => {
-        const title = get(node, 'frontmatter.title') || node.fields.slug;
+        const { slug } = node.fields;
+        const { date } = node.frontmatter;
+        const title = get(node, 'frontmatter.title') || slug;
         return (
-          <div key={node.fields.slug}>
-            <h3>
-              <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
-                {title}
-              </Link>
-            </h3>
-            <small>{node.frontmatter.date}</small>
-            <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-          </div>
+          <Fade key={slug}>
+            <Fragment>
+              <h3>
+                <Link to={slug}>{title}</Link>
+              </h3>
+              <small>{date}</small>
+              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+            </Fragment>
+          </Fade>
         );
       })}
     </Page>

@@ -37,7 +37,16 @@ class PressStartScreen extends Component {
   /**
    * Event listener on key down event
    */
-  handleKeyDown = () => {
+  handleKeyDown = (event) => {
+    if (event.keyCode === 13) {
+      this.props.handleContext();
+    }
+  }
+
+  /**
+   * Click
+   */
+  handleClick = () => {
     this.props.handleContext();
   }
 
@@ -46,13 +55,10 @@ class PressStartScreen extends Component {
    */
   render() {
     return (
-      <Wrapper>
-        <div>
-          <Blink>
-            <Text style={{ textAlign: 'center' }}>Press Start</Text>
-          </Blink>
-          <Text>(work in progress)</Text>
-        </div>
+      <Wrapper onClick={this.handleClick}>
+        <Blink>
+          <Text style={{ textAlign: 'center' }}>Press Enter (or click!) to continue</Text>
+        </Blink>
       </Wrapper>
     );
   }

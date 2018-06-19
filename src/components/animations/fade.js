@@ -13,20 +13,20 @@ const FadeAnimation = keyframes`
 /**
  * Blink effect
  */
-const Blink = styled.div`
+const Fade = styled.div`
   animation: ${props => props.duration}s ${FadeAnimation};
   display: ${props => props.display};
 `;
 
-Blink.propTypes = {
+Fade.propTypes = {
   children: PropTypes.element.isRequired,
   duration: PropTypes.number,
 };
 
 
-Blink.defaultProps = {
+Fade.defaultProps = {
   display: 'block',
-  duration: 0,
+  duration: 1,
 };
 
-export default Blink;
+export default Fade;
