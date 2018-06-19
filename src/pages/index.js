@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
+import get from 'lodash/get';
 import PressStartScreen from '../components/homepage/pressStartScreen';
 import Home from '../components/homepage/home';
 import AppContext from '../context/appContext';
@@ -56,9 +58,10 @@ class IndexPage extends Component {
    */
   render() {
     const { context } = this.state;
+    const siteTitle = get(this.props, 'data.site.siteMetadata.title');
     return (
       <div>
-
+        <Helmet title={`home - ${siteTitle}`} />
         <AppContext.Provider value={{ ...this.props.data.site.siteMetadata }}>
           {context === Context.PRESS_START &&
           <PressStartScreen handleContext={this.handleHomeContext} />}

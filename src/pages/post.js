@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import Link from 'gatsby-link';
 import PropsType from 'prop-types';
+import Helmet from 'react-helmet';
 import get from 'lodash/get';
 import Page from '../components/commons/page';
 import Fade from '../components/animations/fade';
@@ -11,9 +12,11 @@ import Fade from '../components/animations/fade';
  */
 const PostIndex = (data) => {
   const posts = get(data, 'data.allMarkdownRemark.edges');
+  const siteTitle = get(data, 'data.site.siteMetadata.title');
 
   return (
     <Page>
+      <Helmet title={`posts - ${siteTitle}`} />
       {posts.map(({ node }) => {
         const { slug } = node.fields;
         const { date } = node.frontmatter;
