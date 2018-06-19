@@ -9,6 +9,10 @@ const Context = {
   HOME: 'HOME',
 };
 
+const LocalStorageData = {
+  PRESS_START: 'PressStartScreenViewed',
+};
+
 /**
  * Init React Application
  */
@@ -20,8 +24,14 @@ class IndexPage extends Component {
   constructor(props) {
     super(props);
 
+    // if press start has already been view
+    let context = Context.PRESS_START;
+    if (localStorage.getItem(LocalStorageData.PRESS_START)) {
+      context = Context.HOME;
+    }
+
     this.state = {
-      context: Context.PRESS_START,
+      context,
     };
   }
 
@@ -29,8 +39,15 @@ class IndexPage extends Component {
    * Update home context
    */
   handleHomeContext = () => {
+    const { context } = this.state;
+    const isPressStartContext = (context === Context.PRESS_START);
+
+    if (isPressStartContext) {
+      localStorage.setItem(LocalStorageData.PRESS_START, true);
+    }
+
     this.setState({
-      context: (this.state.context === Context.PRESS_START) ? Context.HOME : Context.PRESS_START,
+      context: (isPressStartContext) ? Context.HOME : Context.PRESS_START,
     });
   }
 
