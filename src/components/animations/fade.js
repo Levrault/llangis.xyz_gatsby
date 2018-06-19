@@ -16,6 +16,7 @@ const FadeAnimation = keyframes`
 const Fade = styled.div`
   animation: ${props => props.duration}s ${FadeAnimation};
   display: ${props => props.display};
+  width: 100%;
 `;
 
 Fade.propTypes = {
