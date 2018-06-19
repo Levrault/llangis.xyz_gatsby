@@ -1,11 +1,8 @@
 ---
-title: "Reflux and Redux how they can live together"
-date: 2014-09-28
-tags: []
-draft: false
+path: "/reflux-and-redux-how-they-can-live-together"
+date: "2018-06-19T17:12:33.962Z"
+title: "Reflux and Redux how they can live together ?"
 ---
-
-# Reflux and Redux how they can live together ?
 
 Reflux is a simple library for unidirectional dataflow architecture and Redux is a predictable state container for JavaScript apps. In a modern react application, Reflux seems irrelevent and Redux seems to be the best solution to date.
 
@@ -78,4 +75,4 @@ this.props.reflux.onSync(nextRedux);
 
 
 
-That's pretty much all. I made a demo accessible at [this page](https://guitarlove.github.io/reflux-redux-how-they-can-live-together/)
+That's pretty much all. I made a demo accessible at [this page](https://levrault.github.io/reflux-redux-how-they-can-live-together/)

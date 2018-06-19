@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import { injectGlobal } from 'styled-components';
 import Babyblocks from '../../assets/fonts/Babyblocks.ttf';
 
-import Header from '../components/header/header';
+import Navbar from '../components/navbar/navbar';
 
 /* eslint-disable no-unused-expressions */
 injectGlobal`
@@ -29,7 +29,7 @@ const Layout = ({ children, data }) => (
         { name: 'keywords', content: 'blog, javascript, front-end, game design' },
       ]}
     />
-    <Header siteTitle={data.site.siteMetadata.title} />
+    <Navbar />
     <div>
       {children()}
     </div>
