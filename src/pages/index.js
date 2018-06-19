@@ -28,7 +28,7 @@ class IndexPage extends Component {
 
     // if press start has already been view
     let context = Context.PRESS_START;
-    if (localStorage.getItem(LocalStorageData.PRESS_START)) {
+    if (typeof window !== 'undefined' && localStorage.getItem(LocalStorageData.PRESS_START)) {
       context = Context.HOME;
     }
 
