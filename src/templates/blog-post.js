@@ -1,5 +1,7 @@
 import React from 'react';
+import get from 'lodash/get';
 import Link from 'gatsby-link';
+import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import Page from '../components/commons/page';
 import '../components/utils/typography';
@@ -9,11 +11,13 @@ import '../components/utils/typography';
  */
 const ArticleTemplate = ({ data, pathContext }) => {
   const post = data.markdownRemark;
+  const siteTitle = get(data, 'site.siteMetadata.title');
   const { html, frontmatter: { title, date } } = post;
   const { previous, next } = pathContext;
 
   return (
     <Page>
+      <Helmet title={`${post.frontmatter.title} - ${siteTitle}`} />
       <h1>{title}</h1>
       <p>
         {date}
