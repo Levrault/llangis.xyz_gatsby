@@ -3,7 +3,7 @@ import Link from 'gatsby-link';
 import PropsType from 'prop-types';
 import Helmet from 'react-helmet';
 import get from 'lodash/get';
-import Page from '../components/commons/page';
+import Content from '../components/commons/content';
 import Fade from '../components/animations/fade';
 
 /**
@@ -15,7 +15,7 @@ const PostIndex = (data) => {
   const siteTitle = get(data, 'data.site.siteMetadata.title');
 
   return (
-    <Page>
+    <Content>
       <Helmet title={`posts - ${siteTitle}`} />
       {posts.map(({ node }) => {
         const { slug } = node.fields;
@@ -33,7 +33,7 @@ const PostIndex = (data) => {
           </Fade>
         );
       })}
-    </Page>
+    </Content>
   );
 };
 

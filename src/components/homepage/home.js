@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Page from '../commons/page';
+import Content from '../commons/content';
 import Avatar from '../avatar/avatar';
 import Fade from '../animations/fade';
 import Text from '../commons/text';
@@ -9,7 +9,7 @@ import AppContext from '../../context/appContext';
  * Like in every video game, we land on the famous "press start screen"
  */
 const Home = () => (
-  <Page>
+  <Content>
     <div>
       <Fade duration={1}>
         <Fragment>
@@ -28,7 +28,7 @@ const Home = () => (
         </Fragment>
       </Fade>
     </div>
-  </Page>
+  </Content>
 );
 
 export default Home;
