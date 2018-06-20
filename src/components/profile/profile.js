@@ -17,10 +17,10 @@ const Picture = styled.img`
 /**
  * Avatar picture
  */
-const Avatar = () => (
+const Profile = () => (
   <Wrapper>
     <Picture src={imgSrc} alt="Luc-Frederic Langis" />
   </Wrapper>
 );
 
-export default Avatar;
+export default Profile;
