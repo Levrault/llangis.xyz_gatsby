@@ -26,15 +26,17 @@ class IndexPage extends Component {
   constructor(props) {
     super(props);
 
-    // if press start has already been view
-    let context = Context.PRESS_START;
-    if (typeof window !== 'undefined' && localStorage.getItem(LocalStorageData.PRESS_START)) {
-      context = Context.HOME;
-    }
-
     this.state = {
-      context,
+      context: Context.PRESS_START,
     };
+  }
+
+  componentDidMount() {
+    if (typeof window !== 'undefined' && localStorage.getItem(LocalStorageData.PRESS_START)) {
+      this.setState({
+        context: Context.HOME,
+      });
+    }
   }
 
   /**
