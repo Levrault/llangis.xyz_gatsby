@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Page = styled.div`
+const Content = styled.div`
   max-width: 1024px;
   margin: 0 auto;
   padding: 16px;
@@ -10,4 +10,4 @@ const Page = styled.div`
   flex-direction: column;
 `;
 
-export default Page;
+export default Content;
