@@ -12,6 +12,8 @@
     "react/jsx-filename-extension": 0,
     "react/sort-comp": 0,
     "global-require": 0,
+    "indent": ["error", 2],
+    "react/jsx-indent-props": ["error", 2],
     "require-jsdoc": ["error", { "require": { "FunctionDeclaration": true, "MethodDefinition": true, "ClassDeclaration": true, "ArrowFunctionExpression": true } }],
     "react/forbid-prop-types": [0, { "forbid": ["object"] }],
     "import/no-extraneous-dependencies": false,

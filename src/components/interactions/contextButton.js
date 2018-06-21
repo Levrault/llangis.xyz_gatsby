@@ -7,8 +7,8 @@ import ProfilePreview from '../profile/profilePreview';
 const Button = styled.div`
   border: none;
   background:none;
+  padding: 8px 16px 16px;
   cursor: pointer;
-  padding: 16px;
 `;
 
 const Wrapper = styled.div`
@@ -17,21 +17,31 @@ const Wrapper = styled.div`
 `;
 
 /**
+ * onclick button actions
+ * @param {string} context
+ * @param {function} callback
+ */
+const handleClick = (url, callback) => () => {
+    callback();
+    navigateTo(`/${url}`);
+};
+
+/**
  * Change application context
  */
 const ContextButton = () => {
-  return (
-    <Wrapper>
-      <AppContext.Consumer>
-        {({ context, toggleContext }) => (
-          <Fragment>
-            <ProfilePreview context={context} />
-            <Button onClick={toggleContext}>{context}</Button>
-          </Fragment>
-        )}
-      </AppContext.Consumer>
-    </Wrapper>
-  );
-}
+    return (
+        <Wrapper>
+            <AppContext.Consumer>
+                {({ context, nextContext, toggleContext }) => (
+                    <Fragment>
+                        <ProfilePreview context={context} />
+                        <Button onClick={handleClick(nextContext, toggleContext)}>{context}</Button>
+                    </Fragment>
+                )}
+            </AppContext.Consumer>
+        </Wrapper>
+    );
+};
 
 export default ContextButton;

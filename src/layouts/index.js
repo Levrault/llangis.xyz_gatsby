@@ -1,20 +1,28 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import get from 'lodash/get';
 import { injectGlobal } from 'styled-components';
 import Babyblocks from './Babyblocks.ttf';
+import Inconsolata from './Inconsolata-Regular.ttf';
 import Favicon from './favicon.ico';
 import Navbar from '../components/navbar/navbar';
 import AppContext from '../context/appContext';
 import CONTEXT from '../context/appConstant';
-import { navigateTo } from 'gatsby-link';
-import get from 'lodash/get';
+import cycleContext from '../context/appActions';
 
 /* eslint-disable no-unused-expressions */
 injectGlobal`
   @font-face {
     font-family: Babyblocks;
     src: url("${Babyblocks}");
+  }
+  @font-face {
+    font-family: Inconsolata;
+    src: url("${Inconsolata}");
+  }
+  html, body {
+    font-family: 'Inconsolata', monospace;
   }
 `;
 /* eslint-enable no-unused-expressions */
@@ -29,16 +37,18 @@ class Layout extends Component {
 
     this.state = {
       context: CONTEXT.WEBDEV,
+      nextContext: cycleContext(CONTEXT.WEBDEV)
     };
   }
-
+  
   /**
    * Update home context
    */
   toggleContext = () => {
-    const { context } = this.state;
+    const context = cycleContext(this.state.context);
     this.setState({
-      context: (context === CONTEXT.WEBDEV) ? CONTEXT.GAMEDEV : CONTEXT.WEBDEV,
+      context,
+      nextContext: cycleContext(context)
     });
   }
 
@@ -46,7 +56,6 @@ class Layout extends Component {
    * render
    */
   render() {
-    const { context } = this.state;
     const { children } = this.props;
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
     return (

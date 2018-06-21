@@ -10,7 +10,7 @@ import Fade from '../components/animations/fade';
  * Post index
  * @param {object} data
  */
-const PostIndex = (data) => {
+const WebDev = (data) => {
   const posts = get(data, 'data.allMarkdownRemark.edges');
   const siteTitle = get(data, 'data.site.siteMetadata.title');
 
@@ -37,20 +37,25 @@ const PostIndex = (data) => {
   );
 };
 
-PostIndex.PropsType = {
+WebDev.PropsType = {
   data: PropsType.object.isRequired,
 };
 
-export default PostIndex;
+export default WebDev;
 
-export const pageQuery = graphql`
-  query IndexQuery {
+export const WebDevPageQuery = graphql`
+  query WebDevQuery {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      filter: { fileAbsolutePath: {regex : "\/webdev/"} },
+      sort: { 
+      fields: [frontmatter___date], 
+      order: DESC }
+    ) {
       edges {
         node {
           excerpt

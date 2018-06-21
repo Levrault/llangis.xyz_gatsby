@@ -1,47 +1,23 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Fragment } from 'react';
+import Link from 'gatsby-link';
+import PropsType from 'prop-types';
 import Helmet from 'react-helmet';
 import get from 'lodash/get';
-import AppContext from '../context/appContext';
-
-const Context = {
-  WEBDEV: 'WEBDEV',
-  GAMEDEV: 'GAMEDEV',
-};
+import Content from '../components/commons/content';
+import Fade from '../components/animations/fade';
 
 /**
- * Index page
+ * Post index
+ * @param {object} data
  */
-const IndexPage = (props) => {
-  const siteTitle = get(props, 'data.site.siteMetadata.title');
+const Index = (data) => {
   return (
-    <div>
-      <AppContext.Consumer>
-        {({ context }) => (
-          <React.Fragment>
-            <Helmet title={`${context} - ${siteTitle}`} />
-            <span>{context}</span>
-          </React.Fragment>
-        )}
-      </AppContext.Consumer>
-    </div>
+    <Content>
+      Welcome 
+    </Content>
   );
-}
-
-IndexPage.propTypes = {
-  data: PropTypes.object.isRequired,
 };
 
-export default IndexPage;
+Index.PropsType = {};
 
-export const query = graphql`
-  query IndexStoreQuery {
-    site {
-      siteMetadata {
-        title,
-        author
-      }
-    }
-  }
-`;
-
+export default Index;
