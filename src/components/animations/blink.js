@@ -20,12 +20,12 @@ const Blink = styled.div`
 
 Blink.propTypes = {
   display: PropTypes.string,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.element.isRequired
 };
 
 
 Blink.defaultProps = {
-  display: 'block',
+  display: 'block'
 };
 
 export default Blink;

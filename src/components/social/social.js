@@ -1,12 +1,24 @@
 import React from 'react';
-import List from '../commons/list';
+import HorizontalList from '../commons/horizontalList';
 import ListItem from '../commons/listItem';
 import GitHub from './github.svg';
 import Twitter from './twitter.svg';
 import Linkedin from './linkedin.svg';
+import ProfilePreview from '../profile/profilePreview';
+import AppContext from '../../context/appContext';
 
+/**
+ * Social media button and profile
+ */
 const Social = () => (
-  <List>
+  <HorizontalList>
+    <ListItem>
+      <AppContext.Consumer>
+        {({ context }) => (
+          <ProfilePreview context={context} />
+        )}
+      </AppContext.Consumer>
+    </ListItem>
     <ListItem>
       <a href="https://twitter.com/LFLangis" target="_blank">
         <img src={Twitter} alt="Twitter icon" />
@@ -22,7 +34,7 @@ const Social = () => (
         <img src={Linkedin} alt="Linkedin icon" />
       </a>
     </ListItem>
-  </List>
+  </HorizontalList>
 );
 
 export default Social;
