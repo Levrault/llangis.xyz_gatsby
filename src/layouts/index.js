@@ -4,7 +4,6 @@ import Helmet from 'react-helmet';
 import get from 'lodash/get';
 import { injectGlobal } from 'styled-components';
 import Babyblocks from './Babyblocks.ttf';
-import Inconsolata from './Inconsolata-Regular.ttf';
 import Favicon from './favicon.ico';
 import Navbar from '../components/navbar/navbar';
 import AppContext from '../context/appContext';
@@ -16,13 +15,6 @@ injectGlobal`
   @font-face {
     font-family: Babyblocks;
     src: url("${Babyblocks}");
-  }
-  @font-face {
-    font-family: Inconsolata;
-    src: url("${Inconsolata}");
-  }
-  html, body {
-    font-family: 'Inconsolata', Helvetica;
   }
 `;
 /* eslint-enable no-unused-expressions */

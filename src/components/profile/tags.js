@@ -10,6 +10,7 @@ margin-top: 8px;
 
 const Tag = styled.li`
   display: flex;
+  margin-bottom: 4px;
 `;
 
 /**
