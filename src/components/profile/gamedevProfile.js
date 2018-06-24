@@ -29,7 +29,7 @@ const WebdevProfile = () => (
   <GameDevInnerProfileWrapper>
     <Picture src={imgSrc} alt="Luc-Frederic Langis" />
     <Text textAlign="center" fontSize="22px">Luc-Frederic Langis</Text>
-    <Text textAlign="center" fontSize="16px">Amateur video game dev</Text>
+    <Text fontSize="16px">Amateur video game dev</Text>
     <Tags items={skills} />
   </GameDevInnerProfileWrapper>
 );
