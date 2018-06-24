@@ -1,11 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
-import List from '../commons/list';
+import HorizontalList from '../commons/horizontalList';
 import ListItem from '../commons/listItem';
 import ContextButton from '../interactions/contextButton';
 import Social from '../social/social';
 
-const NavList = List.extend`
+const NavList = HorizontalList.extend`
   justify-content: space-between;
 
   @media(max-width: 351px) {
@@ -28,7 +27,5 @@ const Navbar = () => (
     </ListItem>
   </NavList>
 );
-
-Navbar.propTypes = {};
 
 export default Navbar;

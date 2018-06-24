@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
-const ListItem = styled.div`
+const ListItem = styled.li`
   display: inline-block;
-  padding: 16px;
-  margin-left: 0;
+  padding: 8px 16px;
   text-transform: capitalize;
 `;
 

@@ -27,12 +27,15 @@ injectGlobal`
 `;
 /* eslint-enable no-unused-expressions */
 
+/**
+ * Main layout
+ */
 class Layout extends Component {
   /**
    * @constructor
    * @param {object} props
    */
-  constructor(props) {
+  constructor (props) {
     super(props);
 
     this.state = {
@@ -40,7 +43,7 @@ class Layout extends Component {
       nextContext: cycleContext(CONTEXT.WEBDEV)
     };
   }
-  
+
   /**
    * Update home context
    */
@@ -55,16 +58,16 @@ class Layout extends Component {
   /**
    * render
    */
-  render() {
+  render () {
     const { children } = this.props;
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
     return (
       <div>
         <Helmet
-          title={siteTitle}
-          meta={[
+            title={siteTitle}
+            meta={[
             { name: 'description', content: 'Hi folks' },
-            { name: 'keywords', content: 'blog, javascript, front-end, game design' },
+            { name: 'keywords', content: 'blog, javascript, front-end, game design' }
           ]}
         >
           <link rel="icon" type="image/png" href={Favicon} sizes="16x16" />
@@ -83,7 +86,7 @@ class Layout extends Component {
 
 Layout.propTypes = {
   children: PropTypes.func.isRequired,
-  data: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired
 };
 
 export default Layout;

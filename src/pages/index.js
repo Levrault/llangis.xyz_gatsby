@@ -1,10 +1,5 @@
-import React, { Fragment } from 'react';
-import Link from 'gatsby-link';
-import PropsType from 'prop-types';
-import Helmet from 'react-helmet';
-import get from 'lodash/get';
+import React from 'react';
 import Content from '../components/commons/content';
-import Fade from '../components/animations/fade';
 
 /**
  * Post index
@@ -13,7 +8,7 @@ import Fade from '../components/animations/fade';
 const Index = (data) => {
   return (
     <Content>
-      Welcome 
+      Welcome
     </Content>
   );
 };
