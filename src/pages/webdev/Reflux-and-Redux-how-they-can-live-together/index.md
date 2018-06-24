@@ -1,5 +1,5 @@
 ---
-path: "/reflux-and-redux-how-they-can-live-together"
+path: "reflux-and-redux-how-they-can-live-together"
 date: "2018-06-19T17:12:33.962Z"
 title: "Reflux and Redux how they can live together ?"
 ---

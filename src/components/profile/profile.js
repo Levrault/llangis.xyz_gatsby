@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import WebdevProfile from './webdevProfile';
-import GamedevProfile from './GamedevProfile';
+import GamedevProfile from './gamedevProfile';
 import PropTypes from 'prop-types';
 import Fade from '../animations/fade';
 import AppContext from '../../context/appContext';
