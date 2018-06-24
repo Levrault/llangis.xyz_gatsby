@@ -22,7 +22,7 @@ injectGlobal`
     src: url("${Inconsolata}");
   }
   html, body {
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Inconsolata', Helvetica;
   }
 `;
 /* eslint-enable no-unused-expressions */
@@ -64,8 +64,8 @@ class Layout extends Component {
     return (
       <div>
         <Helmet
-            title={siteTitle}
-            meta={[
+          title={siteTitle}
+          meta={[
             { name: 'description', content: 'Hi folks' },
             { name: 'keywords', content: 'blog, javascript, front-end, game design' }
           ]}

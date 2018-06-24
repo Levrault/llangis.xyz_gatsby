@@ -13,7 +13,6 @@ const ArticleTemplate = ({ data, pathContext }) => {
   const post = data.markdownRemark;
   const siteTitle = get(data, 'site.siteMetadata.title');
   const { html, frontmatter: { title, date } } = post;
-  const { previous, next } = pathContext;
 
   return (
     <Content>
@@ -23,31 +22,13 @@ const ArticleTemplate = ({ data, pathContext }) => {
         {date}
       </p>
       <div dangerouslySetInnerHTML={{ __html: html }} />
-      <hr />
-      <ul>
-        {previous && (
-        <li>
-          <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-          </Link>
-        </li>
-          )}
-
-        {next && (
-        <li>
-          <Link to={next.fields.slug} rel="next">
-            {next.frontmatter.title} →
-          </Link>
-        </li>
-          )}
-      </ul>
     </Content>
   );
 };
 
 ArticleTemplate.propTypes = {
   data: PropTypes.object.isRequired,
-  pathContext: PropTypes.object.isRequired,
+  pathContext: PropTypes.object.isRequired
 };
 
 export default ArticleTemplate;
