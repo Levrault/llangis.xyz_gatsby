@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import get from 'lodash/get';
 import { injectGlobal } from 'styled-components';
 import Babyblocks from './Babyblocks.ttf';
+import Inconsolata from './Inconsolata-Regular.ttf';
 import Favicon from './favicon.ico';
 import Navbar from '../components/navbar/navbar';
+import AppContext from '../context/appContext';
+import CONTEXT from '../context/appConstant';
+import cycleContext from '../context/appActions';
 
 /* eslint-disable no-unused-expressions */
 injectGlobal`
@@ -12,38 +17,76 @@ injectGlobal`
     font-family: Babyblocks;
     src: url("${Babyblocks}");
   }
+  @font-face {
+    font-family: Inconsolata;
+    src: url("${Inconsolata}");
+  }
   html, body {
-    font-family: Babyblocks;
+    font-family: 'Inconsolata', monospace;
   }
 `;
 /* eslint-enable no-unused-expressions */
 
 /**
- * Main Layout
- * @param {object} children
- * @param {object} data
+ * Main layout
  */
-const Layout = ({ children, data }) => (
-  <div>
-    <Helmet
-      title={data.site.siteMetadata.title}
-      meta={[
-        { name: 'description', content: 'Hi folks' },
-        { name: 'keywords', content: 'blog, javascript, front-end, game design' },
-      ]}
-    >
-      <link rel="icon" type="image/png" href={Favicon} sizes="16x16" />
-    </Helmet>
-    <Navbar />
-    <div>
-      {children()}
-    </div>
-  </div>
-);
+class Layout extends Component {
+  /**
+   * @constructor
+   * @param {object} props
+   */
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      context: CONTEXT.WEBDEV,
+      nextContext: cycleContext(CONTEXT.WEBDEV)
+    };
+  }
+
+  /**
+   * Update home context
+   */
+  toggleContext = () => {
+    const context = cycleContext(this.state.context);
+    this.setState({
+      context,
+      nextContext: cycleContext(context)
+    });
+  }
+
+  /**
+   * render
+   */
+  render () {
+    const { children } = this.props;
+    const siteTitle = get(this.props, 'data.site.siteMetadata.title');
+    return (
+      <div>
+        <Helmet
+            title={siteTitle}
+            meta={[
+            { name: 'description', content: 'Hi folks' },
+            { name: 'keywords', content: 'blog, javascript, front-end, game design' }
+          ]}
+        >
+          <link rel="icon" type="image/png" href={Favicon} sizes="16x16" />
+        </Helmet>
+        <AppContext.Provider value={{ ...this.state, toggleContext: this.toggleContext }}>
+          <Navbar />
+          <div>
+            {children()}
+          </div>
+        </AppContext.Provider>
+      </div>
+    );
+  }
+}
+
 
 Layout.propTypes = {
   children: PropTypes.func.isRequired,
-  data: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired
 };
 
 export default Layout;

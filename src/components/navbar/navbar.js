@@ -1,21 +1,16 @@
 import React from 'react';
-import Link from 'gatsby-link';
-import styled from 'styled-components';
+import HorizontalList from '../commons/horizontalList';
+import ListItem from '../commons/listItem';
+import ContextButton from '../interactions/contextButton';
+import Social from '../social/social';
 
-const Nav = styled.ul`
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  padding: 0;
-  margin-left: 0;
-  -list-style: none;
-`;
+const NavList = HorizontalList.extend`
+  justify-content: space-between;
 
-const Item = styled.ul`
-  display: inline-block;
-  padding: 16px;
-  margin-left: 0;
-  text-transform: capitalize;
+  @media(max-width: 351px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 /**
@@ -23,16 +18,14 @@ const Item = styled.ul`
  * @param {object} items
  */
 const Navbar = () => (
-  <Nav>
-    <Item>
-      <Link to="/">Home</Link>
-    </Item>
-    <Item>
-      <Link to="/post">Post</Link>
-    </Item>
-  </Nav>
+  <NavList>
+    <ListItem>
+      <ContextButton />
+    </ListItem>
+    <ListItem>
+      <Social />
+    </ListItem>
+  </NavList>
 );
-
-Navbar.propTypes = {};
 
 export default Navbar;
