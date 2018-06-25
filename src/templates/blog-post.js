@@ -1,6 +1,5 @@
 import React from 'react';
 import get from 'lodash/get';
-import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import Content from '../components/commons/content';

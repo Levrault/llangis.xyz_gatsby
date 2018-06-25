@@ -14,8 +14,8 @@ const Button = styled.div`
 
 const Picture = styled.img`
   border-radius: 100%;
-  width: 24px;
-  height: 24px;
+  width: 23px;
+  height: 23px;
   border: 1px solid #111111;
   margin-bottom: 8px;
 `;
