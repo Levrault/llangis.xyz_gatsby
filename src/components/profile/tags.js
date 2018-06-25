@@ -5,13 +5,12 @@ import VerticalList from '../commons/verticalList';
 import Icon from '../commons/icon';
 
 const TagsList = VerticalList.extend`
-margin-top: 8px;
+  margin-top: 8px;
 `;
 
 const Tag = styled.li`
   display: flex;
   margin-bottom: 4px;
-  justify-content: flex-start;
   align-items: center;
 `;
 
