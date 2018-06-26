@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import CONTEXT from '../../context/appConstant';
 import GameDevProfileSrc from './profile_gamedev.png';
 import WebDevProfileSrc from './profile_webdev.png';
 import Profile from './profile';
+import AppContext from '../../context/appContext';
 
-const Button = styled.div`
+const Button = styled.button`
   border: none;
-  background:none;
+  background: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 `;
 
 const Picture = styled.img`
   border-radius: 100%;
-  width: 23px;
-  height: 23px;
+  width: 31px;
+  height: 31px;
   border: 1px solid #111111;
   margin-bottom: 8px;
 `;
@@ -25,9 +27,9 @@ const Picture = styled.img`
  */
 class ProfilePreview extends Component {
   /**
-  * @contructor
-  * @param {object} props
-  */
+   * @contructor
+   * @param {object} props
+   */
   constructor (props) {
     super(props);
     this.state = {
@@ -45,22 +47,27 @@ class ProfilePreview extends Component {
   }
 
   /**
-  * Render
-  */
+   * Render
+   */
   render () {
-    const { context } = this.props;
     const { profileEnable } = this.state;
-
-    let src = WebDevProfileSrc;
-
-    if (context === CONTEXT.GAMEDEV) {
-      src = GameDevProfileSrc;
-    }
 
     return (
       <div>
         <Button onClick={this.handleClick}>
-          <Picture src={src} alt={`${context} profile picture of Luc-Frederic Langis`} />
+          <AppContext.Consumer>
+            {({ context }) => {
+              let src = WebDevProfileSrc;
+
+              if (context === CONTEXT.GAMEDEV) {
+                src = GameDevProfileSrc;
+              }
+
+              return (
+                <Picture src={src} alt={`${context} profile picture of Luc-Frederic Langis`} />
+              );
+            }}
+          </AppContext.Consumer>
         </Button>
         <Profile enable={profileEnable} />
       </div>
@@ -68,9 +75,7 @@ class ProfilePreview extends Component {
   }
 }
 
-ProfilePreview.propTypes = {
-  context: PropTypes.string.isRequired
-};
+ProfilePreview.propTypes = {};
 
 ProfilePreview.defaultProps = {};
 

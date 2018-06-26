@@ -8,7 +8,7 @@ import Favicon from './favicon.ico';
 import Navbar from '../components/navbar/navbar';
 import AppContext from '../context/appContext';
 import CONTEXT from '../context/appConstant';
-import cycleContext from '../context/appActions';
+import Social from '../components/social/social';
 
 /* eslint-disable no-unused-expressions */
 injectGlobal`
@@ -31,19 +31,16 @@ class Layout extends Component {
     super(props);
 
     this.state = {
-      context: CONTEXT.WEBDEV,
-      nextContext: cycleContext(CONTEXT.WEBDEV)
+      context: CONTEXT.WEBDEV
     };
   }
 
   /**
    * Update home context
    */
-  toggleContext = () => {
-    const context = cycleContext(this.state.context);
+  toggleContext = (context) => {
     this.setState({
-      context,
-      nextContext: cycleContext(context)
+      context
     });
   }
 
@@ -69,6 +66,7 @@ class Layout extends Component {
           <div>
             {children()}
           </div>
+          <Social />
         </AppContext.Provider>
       </div>
     );
