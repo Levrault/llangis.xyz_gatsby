@@ -1,15 +1,19 @@
 import React from 'react';
 import HorizontalList from '../commons/horizontalList';
 import ListItem from '../commons/listItem';
-import ContextButton from '../interactions/contextButton';
-import Social from '../social/social';
+import ContextLink from '../interactions/contextLink';
+import CONTEXT from '../../context/appConstant';
+import ProfilePreview from '../profile/profilePreview';
 
 const NavList = HorizontalList.extend`
   justify-content: space-between;
+  margin: 0;
+`;
 
-  @media(max-width: 351px) {
-    flex-direction: column;
-    align-items: center;
+const SubListItem = ListItem.extend`
+  padding: 0 16px 0 0;
+  &:last-child {
+    margin-bottom: auto;
   }
 `;
 
@@ -20,10 +24,20 @@ const NavList = HorizontalList.extend`
 const Navbar = () => (
   <NavList>
     <ListItem>
-      <ContextButton />
+      <HorizontalList>
+        <SubListItem>
+          <ContextLink url="">Home</ContextLink>
+        </SubListItem>
+        <SubListItem>
+          <ContextLink url="webdev" context={CONTEXT.WEBDEV}>WebDev</ContextLink>
+        </SubListItem>
+        <SubListItem>
+          <ContextLink url="gamedev" context={CONTEXT.GAMEDEV}>GameDev</ContextLink>
+        </SubListItem>
+      </HorizontalList>
     </ListItem>
     <ListItem>
-      <Social />
+      <ProfilePreview />
     </ListItem>
   </NavList>
 );

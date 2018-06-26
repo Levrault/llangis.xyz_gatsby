@@ -13,13 +13,6 @@ import AppContext from '../../context/appContext';
 const Social = () => (
   <HorizontalList>
     <ListItem>
-      <AppContext.Consumer>
-        {({ context }) => (
-          <ProfilePreview context={context} />
-        )}
-      </AppContext.Consumer>
-    </ListItem>
-    <ListItem>
       <a href="https://twitter.com/LFLangis" target="_blank">
         <img src={Twitter} alt="Twitter icon" />
       </a>
