@@ -1,5 +1,6 @@
 import React from 'react';
 import Content from '../components/commons/content';
+import Home from '../components/homepage/home';
 
 /**
  * Post index
@@ -8,7 +9,7 @@ import Content from '../components/commons/content';
 const Index = (data) => {
   return (
     <Content>
-      Welcome
+      <Home />
     </Content>
   );
 };
