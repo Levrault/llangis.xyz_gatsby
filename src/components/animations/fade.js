@@ -21,13 +21,13 @@ const Fade = styled.div`
 
 Fade.propTypes = {
   children: PropTypes.element.isRequired,
-  duration: PropTypes.number,
+  duration: PropTypes.number
 };
 
 
 Fade.defaultProps = {
   display: 'block',
-  duration: 1,
+  duration: 1
 };
 
 export default Fade;

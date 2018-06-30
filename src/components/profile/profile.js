@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import Slide from '../animations/slide';
 import WebdevProfile from './webdevProfile';
 import GamedevProfile from './gamedevProfile';
-import PropTypes from 'prop-types';
-import Fade from '../animations/fade';
 import AppContext from '../../context/appContext';
 import CONTEXT from '../../context/appConstant';
 
 const Wrapper = styled.div`
-  position: absolute;
+  position: fixed;
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
   border-radius: 4px;
   margin-top: 4px;
@@ -16,8 +16,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding: 16px;
   background-color: #FFFFFF;
-  right: 4px;
   max-width: 230px;
+  width: 230px;
   z-index: 10;
 `;
 
@@ -27,18 +27,18 @@ const Wrapper = styled.div`
 const Profile = ({ enable }) => {
   if (!enable) return null;
   return (
-    <Fade duration={0.5}>
+    <Slide from="100px" to="-170px">
       <Wrapper>
         <AppContext.Consumer>
           {({ context }) => (
             <Fragment>
-              {context === CONTEXT.WEBDEV && <Fade><WebdevProfile /></Fade>}
-              {context === CONTEXT.GAMEDEV && <Fade><GamedevProfile /></Fade>}
+              {context === CONTEXT.WEBDEV && <WebdevProfile />}
+              {context === CONTEXT.GAMEDEV && <GamedevProfile />}
             </Fragment>
           )}
         </AppContext.Consumer>
       </Wrapper>
-    </Fade>
+    </Slide>
   );
 };
 
