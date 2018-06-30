@@ -4,8 +4,6 @@ import ListItem from '../commons/listItem';
 import GitHub from './github.svg';
 import Twitter from './twitter.svg';
 import Linkedin from './linkedin.svg';
-import ProfilePreview from '../profile/profilePreview';
-import AppContext from '../../context/appContext';
 
 /**
  * Social media button and profile

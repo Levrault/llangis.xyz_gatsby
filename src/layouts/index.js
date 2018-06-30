@@ -50,15 +50,13 @@ class Layout extends Component {
   render () {
     const { children } = this.props;
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
+    const meta = [
+      { name: 'description', content: 'Hi folks' },
+      { name: 'keywords', content: 'blog, react, unity, front-end, game design' }
+    ];
     return (
       <div>
-        <Helmet
-          title={siteTitle}
-          meta={[
-            { name: 'description', content: 'Hi folks' },
-            { name: 'keywords', content: 'blog, javascript, front-end, game design' }
-          ]}
-        >
+        <Helmet title={siteTitle} meta={meta}>
           <link rel="icon" type="image/png" href={Favicon} sizes="16x16" />
         </Helmet>
         <AppContext.Provider value={{ ...this.state, toggleContext: this.toggleContext }}>
