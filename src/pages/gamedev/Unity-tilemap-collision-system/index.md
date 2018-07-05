@@ -4,8 +4,6 @@ date: "2018-07-05T10:15:00.962Z"
 title: "Unity, Tilemaps and collision"
 ---
 
-# Unity, Tilemaps and collision
-
 Tilemaps are a very common technique in 2D development. It's consisting of regrouping level, theme or props in the same regular shaped image. It make building a consistent 2D game world more accessible and faster for the developpers and it also result in a performance and memory gains. 
 
 Since Unity 2017.2, tilemap has finaly became a part of the Unity 2D dev tool. Before this version, you needed to build your own tilemap system or use a third party assets. 
