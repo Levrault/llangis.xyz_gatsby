@@ -24,23 +24,20 @@ const Wrapper = styled.div`
 /**
  * Avatar picture
  */
-const Profile = ({ enable }) => {
-  if (!enable) return null;
-  return (
-    <Slide from="100px" to="-170px">
-      <Wrapper>
-        <AppContext.Consumer>
-          {({ context }) => (
-            <Fragment>
-              {context === CONTEXT.WEBDEV && <WebdevProfile />}
-              {context === CONTEXT.GAMEDEV && <GamedevProfile />}
-            </Fragment>
-          )}
-        </AppContext.Consumer>
-      </Wrapper>
-    </Slide>
-  );
-};
+const Profile = ({ enable }) => (
+  <Slide from="100px" to="-170px" active={enable}>
+    <Wrapper>
+      <AppContext.Consumer>
+        {({ context }) => (
+          <Fragment>
+            {context === CONTEXT.WEBDEV && <WebdevProfile />}
+            {context === CONTEXT.GAMEDEV && <GamedevProfile />}
+          </Fragment>
+        )}
+      </AppContext.Consumer>
+    </Wrapper>
+  </Slide>
+);
 
 Profile.propTypes = {
   enable: PropTypes.bool
