@@ -30,11 +30,20 @@ class Layout extends Component {
    */
   constructor (props) {
     super(props);
-    const isGameDev = location.pathname === withPrefix(CONTEXT.GAMEDEV);
 
     this.state = {
-      context: (isGameDev) ? CONTEXT.GAMEDEV : CONTEXT.WEBDEV
+      context: CONTEXT.GAMEDEV
     };
+  }
+
+  /**
+   * Set context on mount
+   */
+  componentDidMount () {
+    const isGameDev = (location.pathname === withPrefix(`/${CONTEXT.GAMEDEV}/`));
+    this.setState({
+      context: (isGameDev) ? CONTEXT.GAMEDEV : CONTEXT.WEBDEV
+    });
   }
 
   /**
