@@ -1,6 +1,6 @@
 const CONTEXT = {
   WEBDEV: 'webdev',
-  GAMEDEV: 'gamedev',
+  GAMEDEV: 'gamedev'
 };
 
 export default CONTEXT;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withPrefix } from 'gatsby-link';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import get from 'lodash/get';
@@ -29,9 +30,10 @@ class Layout extends Component {
    */
   constructor (props) {
     super(props);
+    const isGameDev = location.pathname === withPrefix(CONTEXT.GAMEDEV);
 
     this.state = {
-      context: CONTEXT.WEBDEV
+      context: (isGameDev) ? CONTEXT.GAMEDEV : CONTEXT.WEBDEV
     };
   }
 
