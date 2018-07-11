@@ -17,6 +17,9 @@ injectGlobal`
     font-family: Babyblocks;
     src: url("${Babyblocks}");
   }
+  html {
+    overflow-y: hidden;
+  }
 `;
 /* eslint-enable no-unused-expressions */
 
