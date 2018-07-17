@@ -10,8 +10,8 @@ import CONTEXT from '../../context/appConstant';
 const Wrapper = styled.div`
   position: fixed;
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-  border-radius: 4px;
-  margin-top: 4px;
+  border-radius: 0 0 4px 4px;
+  margin-top: 16px;
   display: flex;
   flex-direction: column;
   padding: 16px;
@@ -25,7 +25,7 @@ const Wrapper = styled.div`
  * Avatar picture
  */
 const Profile = ({ enable }) => (
-  <Slide from="100px" to="-170px" active={enable}>
+  <Slide from="100px" to="-169px" active={enable}>
     <Wrapper>
       <AppContext.Consumer>
         {({ context }) => (

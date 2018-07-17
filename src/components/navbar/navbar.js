@@ -6,6 +6,7 @@ import CONTEXT from '../../context/appConstant';
 import ProfilePreview from '../profile/profilePreview';
 
 const NavList = HorizontalList.extend`
+  background-color: #FFFFFF;
   justify-content: space-between;
   margin: 0;
 `;
