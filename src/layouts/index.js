@@ -19,6 +19,7 @@ injectGlobal`
   }
   html {
     overflow-y: hidden;
+    background: #f1f1f1;
   }
 `;
 /* eslint-enable no-unused-expressions */

@@ -5,7 +5,8 @@ const typography = new Typography(Github);
 
 Github.overrideThemeStyles = ({ rhythm }, options) => ({
   body: {
-    fontFamily: 'Karla'
+    fontFamily: 'Karla',
+    backgroundColor: '#EFEBE9'
   }
 });
 
