@@ -38,7 +38,7 @@ const GameDev = (data) => {
 };
 
 GameDev.PropsType = {
-  data: PropsType.object.isRequired,
+  data: PropsType.object.isRequired
 };
 
 export default GameDev;

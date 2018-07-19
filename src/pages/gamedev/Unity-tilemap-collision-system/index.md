@@ -1,5 +1,6 @@
 ---
 path: "unity-tilemap-and-collision"
+pathName: "gamedev"
 date: "2018-07-05T10:15:00.962Z"
 title: "Unity, Tilemaps and collision"
 ---

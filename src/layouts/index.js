@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withPrefix } from 'gatsby-link';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import get from 'lodash/get';
@@ -24,6 +23,8 @@ injectGlobal`
 `;
 /* eslint-enable no-unused-expressions */
 
+const isGameDevDomain = new RegExp(`${CONTEXT.GAMEDEV}`);
+
 /**
  * Main layout
  */
@@ -44,7 +45,7 @@ class Layout extends Component {
    * Set context on mount
    */
   componentDidMount () {
-    const isGameDev = (location.pathname === withPrefix(`/${CONTEXT.GAMEDEV}/`));
+    const isGameDev = (isGameDevDomain.test(location.pathname));
     this.setState({
       context: (isGameDev) ? CONTEXT.GAMEDEV : CONTEXT.WEBDEV
     });

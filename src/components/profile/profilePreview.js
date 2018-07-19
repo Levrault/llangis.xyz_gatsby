@@ -5,6 +5,7 @@ import GameDevProfileSrc from './profile_gamedev.png';
 import WebDevProfileSrc from './profile_webdev.png';
 import Profile from './profile';
 import AppContext from '../../context/appContext';
+import Fade from '../animations/fade';
 
 const Button = styled.button`
   border: none;
@@ -33,7 +34,8 @@ class ProfilePreview extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      profileEnable: false
+      profileEnable: false,
+      showText: false
     };
   }
 
@@ -47,14 +49,33 @@ class ProfilePreview extends Component {
   }
 
   /**
+   * show text on mouse over
+   */
+  handleMouseEnter = () => {
+    this.setState({
+      showText: true
+    });
+  }
+
+  /**
+   * hide text on mouse over
+   */
+  handleMouseLeave = () => {
+    this.setState({
+      showText: false
+    });
+  }
+
+  /**
    * Render
    */
   render () {
-    const { profileEnable } = this.state;
+    const { profileEnable, showText } = this.state;
 
     return (
       <div>
-        <Button onClick={this.handleClick}>
+        <Button onClick={this.handleClick} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+          {showText && <Fade><span>hello</span></Fade>}
           <AppContext.Consumer>
             {({ context }) => {
               let src = WebDevProfileSrc;
