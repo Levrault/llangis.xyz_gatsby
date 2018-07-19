@@ -21,11 +21,12 @@ const Link = CommonLink.extend`
     left: 50%;
     right: 50%;
     height: 1px;
-    background: hsla(0,0%,0%,0.8); 
+    background: #4078c0;
     transition: all ease .2s;
   } 
 
   &:hover {
+    color: #4078c0;
     &:after {
       left: 0;
       right: 0;
