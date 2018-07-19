@@ -5,7 +5,10 @@ import GameDevProfileSrc from './profile_gamedev.png';
 import WebDevProfileSrc from './profile_webdev.png';
 import Profile from './profile';
 import AppContext from '../../context/appContext';
-import Fade from '../animations/fade';
+
+const Wrapper = styled.div`
+  position: relative;
+`;
 
 const Button = styled.button`
   border: none;
@@ -70,12 +73,11 @@ class ProfilePreview extends Component {
    * Render
    */
   render () {
-    const { profileEnable, showText } = this.state;
+    const { profileEnable } = this.state;
 
     return (
-      <div>
+      <Wrapper>
         <Button onClick={this.handleClick} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-          {showText && <Fade><span>hello</span></Fade>}
           <AppContext.Consumer>
             {({ context }) => {
               let src = WebDevProfileSrc;
@@ -91,7 +93,7 @@ class ProfilePreview extends Component {
           </AppContext.Consumer>
         </Button>
         <Profile enable={profileEnable} />
-      </div>
+      </Wrapper>
     );
   }
 }
