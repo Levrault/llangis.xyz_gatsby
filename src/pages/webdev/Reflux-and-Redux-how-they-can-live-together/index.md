@@ -38,10 +38,10 @@ My internal state will be use to keep track of the lastest updated store (Redux 
 * @param  {object} reflux
 */
 onUpdate = (reflux) => {
-this.setState({ reflux, source: 'reflux' });
+  this.setState({ reflux, source: 'reflux' });
 
-// sync redux store
-this.props.reduxSync(reflux);
+  // sync redux store
+  this.props.reduxSync(reflux);
 }
 ```
 
@@ -57,19 +57,19 @@ For the Redux part, I set my internal state in the componentWillReceiveProps fun
 * @param  {object} nextProps
 */
 componentWillReceiveProps(nextProps) {
-const { redux: oldRedux } = this.props;
-const { redux: nextRedux } = nextProps;
+  const { redux: oldRedux } = this.props;
+  const { redux: nextRedux } = nextProps;
 
-// redux source
-if (!_isEqual(oldRedux, nextRedux)) {
-this.setState({
-redux: nextRedux,
-source: 'redux',
-});
+  // redux source
+  if (!_isEqual(oldRedux, nextRedux)) {
+  this.setState({
+  redux: nextRedux,
+  source: 'redux',
+  });
 
-// sync reflux store
-this.props.reflux.onSync(nextRedux);
-}
+  // sync reflux store
+  this.props.reflux.onSync(nextRedux);
+  }
 }
 ```
 

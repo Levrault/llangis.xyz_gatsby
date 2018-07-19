@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import Content from '../components/commons/content';
 import '../components/utils/typography';
+import 'prismjs/themes/prism-tomorrow.css';
 
 /**
  * Article template
