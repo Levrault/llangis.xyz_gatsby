@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import get from 'lodash/get';
 import Content from '../components/commons/content';
 import Fade from '../components/animations/fade';
+import Title from '../components/commons/title';
 
 /**
  * Post index
@@ -17,6 +18,7 @@ const GameDev = (data) => {
   return (
     <Content>
       <Helmet title={`posts - ${siteTitle}`} />
+      <Title><span>Gamedev</span></Title>
       {posts.map(({ node }) => {
         const { slug } = node.fields;
         const { date } = node.frontmatter;

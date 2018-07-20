@@ -62,18 +62,26 @@ class ContextLink extends Component {
   * Render
   */
   render () {
-    const { children, url, context } = this.props;
+    const { children, url, context, hasProfile } = this.props;
     return (
       <AppContext.Consumer>
         {({ toggleContext, toggleProfile }) => (
           <Fragment>
-            <MenuLink
-              onClick={this.handleClick(url, context, toggleContext)}
-              onMouseEnter={this.handleMouseEnter(toggleProfile, context)}
-              onMouseLeave={this.handleMouseLeave(toggleProfile, context)}
-            >
-              {children || url}
-            </MenuLink>
+            {hasProfile &&
+              <MenuLink
+                onClick={this.handleClick(url, context, toggleContext)}
+                onMouseEnter={this.handleMouseEnter(toggleProfile, context)}
+                onMouseLeave={this.handleMouseLeave(toggleProfile, context)}
+              >
+                {children || url}
+              </MenuLink>
+            }
+
+            {!hasProfile &&
+              <MenuLink onClick={this.handleClick(url, context, toggleContext)} >
+                {children || url}
+              </MenuLink>
+            }
           </Fragment>
         )}
       </AppContext.Consumer>
@@ -84,11 +92,13 @@ class ContextLink extends Component {
 ContextLink.propTypes = {
   children: PropTypes.string,
   url: PropTypes.string.isRequired,
-  context: PropTypes.string
+  context: PropTypes.string,
+  hasProfile: PropTypes.bool
 };
 
 ContextLink.defaultProps = {
-  context: CONTEXT.WEBDEV
+  context: CONTEXT.WEBDEV,
+  hasProfile: false
 };
 
 
