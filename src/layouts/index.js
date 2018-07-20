@@ -10,6 +10,7 @@ import AppContext from '../context/appContext';
 import CONTEXT from '../context/appConstant';
 import Social from '../components/social/social';
 import Profile from '../components/profile/profile';
+import '../components/utils/typography';
 
 /* eslint-disable no-unused-expressions */
 injectGlobal`
