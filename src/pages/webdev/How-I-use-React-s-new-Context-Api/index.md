@@ -48,7 +48,7 @@ For this, I will need a small store that look like this
 * **Context** a flag value (webdev or gamedev) 
 * **profileEnable** does my profile is displayed 
 
-# Provinding (creating globally) everything
+# Providing (creating globally) everything
 
 Context api work by using two components
 
@@ -58,7 +58,7 @@ Context api work by using two components
 
 It will sound familiar to you if you are used to Redux.
 
-## Before provinding everything
+## Before providing everything
 
 Before creating my variable and function that are gonna by used by the Context Api, I create two external file:
 
@@ -87,7 +87,7 @@ export default CONTEXT;
 
 ```
 
-## Provinding everything
+## Providing everything
 
 Like Didier Franc already explain in his article, creating a global store can by easy by linking our context why the main state of our main div. That why, all data of my store are managed by `src/layout/index` , my main div.
 
