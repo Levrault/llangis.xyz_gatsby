@@ -39,7 +39,7 @@ I wanted to keep my code simple has possible. I didn't use Redux because it was 
 
 I can said that my blog got two context, one for the web dev and one for the game dev. With that in my mind, I got the following idear. When the use put in mouse of the web dev or game dev menu entrie, a small preview of my profile will slide down. I throught it could be a got idear to show the skill I learn in both of those word.
 
-![2018-07-20 15.14.36](./2018-07-20 15.14.36.gif)
+![preview-profile](./preview-profile.gif)
 
  
 
@@ -253,7 +253,7 @@ Like you saw in `src/components/profile/profile`, consumer is used to get variab
 
 `this.handleMouseEnter` and `this.handleMouseLeave` are function that return an another function. I did it this way to set a timer before updating the provider (since I wanted my link animation to finish before displaying the profile).
 
-![2018-07-20 16.07.14](./2018-07-20 16.09.18.gif)
+![link-animation](./link-animation.gif)
 
 It's also a great way to add some logic before calling a callback
 
