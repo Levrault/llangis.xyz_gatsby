@@ -19,7 +19,7 @@ injectGlobal`
     src: url("${Babyblocks}");
   }
   html {
-    overflow-y: hidden;
+    overflow-x: hidden;
     background: #f1f1f1;
   }
 `;
