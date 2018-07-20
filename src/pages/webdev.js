@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import get from 'lodash/get';
 import Content from '../components/commons/content';
 import Fade from '../components/animations/fade';
+import Title from '../components/commons/title';
 
 /**
  * Post index
@@ -17,6 +18,7 @@ const WebDev = (data) => {
   return (
     <Content>
       <Helmet title={`posts - ${siteTitle}`} />
+      <Title><span>Webdev</span></Title>
       {posts.map(({ node }) => {
         const { slug } = node.fields;
         const { date } = node.frontmatter;
@@ -38,7 +40,7 @@ const WebDev = (data) => {
 };
 
 WebDev.PropsType = {
-  data: PropsType.object.isRequired,
+  data: PropsType.object.isRequired
 };
 
 export default WebDev;

@@ -1,82 +1,105 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { navigateTo } from 'gatsby-link';
 import AppContext from '../../context/appContext';
 import CONTEXT from '../../context/appConstant';
-import CommonLink from '../commons/link';
-
-const Link = CommonLink.extend`
-  position: relative;
-  text-align: center;
-  width: 75px;
-
-  @media (max-width: 700px) {
-    width: auto;
-  }
-
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: -22px;
-    left: 50%;
-    right: 50%;
-    height: 1px;
-    background: #4078c0;
-    transition: all ease .2s;
-  } 
-
-  &:hover {
-    color: #4078c0;
-    &:after {
-      left: 0;
-      right: 0;
-      height: 5px;
-    }
-  } 
-
-  &:before {
-    position: absolute;
-    transform: translateX(-100%);
-    left: -10px;
-    color: #eee;
-    opacity: .3;
-    font-size: 8px;
-  }
-`;
+import MenuLink from '../commons/MenuLink';
 
 /**
- * onclick button actions
- * @param {string} context
- * @param {function} callback
+ * Context link, change app context when clicked
  */
-const handleClick = (url, context, callback) => () => {
-  callback(context);
-  navigateTo(`/${url}`);
-};
+class ContextLink extends Component {
+  /**
+  * @contructor
+  * @param {object} props
+  */
+  constructor (props) {
+    super(props);
+    this.state = {
+      isMouseIn: false
+    };
+  }
 
-/**
- * Change application context
- */
-const ContextLink = ({ children, url, context }) => (
-  <AppContext.Consumer>
-    {({ toggleContext }) => (
-      <Fragment>
-        <Link onClick={handleClick(url, context, toggleContext)}>
-          {children || url}
-        </Link>
-      </Fragment>
-    )}
-  </AppContext.Consumer>
-);
+  /**
+   * onclick button actions
+   * @param {string} context
+   * @param {function} callback
+   */
+  handleClick = (url, context, callback) => () => {
+    callback(context);
+    navigateTo(`/${url}`);
+  };
+
+  /**
+   * Show profile on mouse enter
+   * @param {function} callback
+   * @param {string}   context
+   */
+  handleMouseEnter = (callback, context) => () => {
+    this.setState({
+      isMouseIn: true
+    });
+    setTimeout(() => {
+      if (this.state.isMouseIn) {
+        callback(true, context);
+      }
+    }, 500);
+  };
+
+  /**
+   * hide profile on mouse leave
+   * @param {function} callback
+   * @param {string}   context
+   */
+  handleMouseLeave = (callback, context) => () => {
+    this.setState({
+      isMouseIn: false
+    });
+    callback(false, context);
+  };
+
+  /**
+  * Render
+  */
+  render () {
+    const { children, url, context, hasProfile } = this.props;
+    return (
+      <AppContext.Consumer>
+        {({ toggleContext, toggleProfile }) => (
+          <Fragment>
+            {hasProfile &&
+              <MenuLink
+                onClick={this.handleClick(url, context, toggleContext)}
+                onMouseEnter={this.handleMouseEnter(toggleProfile, context)}
+                onMouseLeave={this.handleMouseLeave(toggleProfile, context)}
+              >
+                {children || url}
+              </MenuLink>
+            }
+
+            {!hasProfile &&
+              <MenuLink onClick={this.handleClick(url, context, toggleContext)} >
+                {children || url}
+              </MenuLink>
+            }
+          </Fragment>
+        )}
+      </AppContext.Consumer>
+    );
+  }
+}
 
 ContextLink.propTypes = {
   children: PropTypes.string,
   url: PropTypes.string.isRequired,
-  context: PropTypes.string
+  context: PropTypes.string,
+  hasProfile: PropTypes.bool
 };
 
 ContextLink.defaultProps = {
-  context: CONTEXT.WEBDEV
+  context: CONTEXT.WEBDEV,
+  hasProfile: false
 };
+
 
 export default ContextLink;

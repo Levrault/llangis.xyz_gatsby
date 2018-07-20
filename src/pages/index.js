@@ -4,16 +4,13 @@ import Home from '../components/homepage/home';
 
 /**
  * Post index
- * @param {object} data
  */
-const Index = (data) => {
+const Index = () => {
   return (
     <Content>
       <Home />
     </Content>
   );
 };
-
-Index.PropsType = {};
 
 export default Index;

@@ -9,6 +9,7 @@ import Navbar from '../components/navbar/navbar';
 import AppContext from '../context/appContext';
 import CONTEXT from '../context/appConstant';
 import Social from '../components/social/social';
+import Profile from '../components/profile/profile';
 
 /* eslint-disable no-unused-expressions */
 injectGlobal`
@@ -37,7 +38,8 @@ class Layout extends Component {
     super(props);
 
     this.state = {
-      context: CONTEXT.GAMEDEV
+      context: CONTEXT.GAMEDEV,
+      profileEnable: false
     };
   }
 
@@ -53,9 +55,21 @@ class Layout extends Component {
 
   /**
    * Update home context
+   * @param {string} context
    */
   toggleContext = (context) => {
     this.setState({
+      context
+    });
+  }
+
+  /**
+   * Show profile preview or not
+   * @param {bool} profileEnable
+   */
+  toggleProfile = (profileEnable, context) => {
+    this.setState({
+      profileEnable,
       context
     });
   }
@@ -65,18 +79,29 @@ class Layout extends Component {
    */
   render () {
     const { children } = this.props;
+
+    // helmet
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
     const meta = [
       { name: 'description', content: 'Hi folks' },
       { name: 'keywords', content: 'blog, react, unity, front-end, game design' }
     ];
+
+    // store value
+    const store = {
+      ...this.state,
+      toggleContext: this.toggleContext,
+      toggleProfile: this.toggleProfile
+    };
+
     return (
       <div>
         <Helmet title={siteTitle} meta={meta}>
           <link rel="icon" type="image/png" href={Favicon} sizes="16x16" />
         </Helmet>
-        <AppContext.Provider value={{ ...this.state, toggleContext: this.toggleContext }}>
+        <AppContext.Provider value={{ ...store }}>
           <Navbar />
+          <Profile />
           <div>
             {children()}
           </div>

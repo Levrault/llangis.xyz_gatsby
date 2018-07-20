@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import CONTEXT from '../../context/appConstant';
 import GameDevProfileSrc from './profile_gamedev.png';
@@ -8,6 +8,10 @@ import AppContext from '../../context/appContext';
 
 const Wrapper = styled.div`
   position: relative;
+
+  @media (min-width: 700px) {
+    display: none;
+  }
 `;
 
 const Button = styled.button`
@@ -31,45 +35,6 @@ const Picture = styled.img`
  */
 class ProfilePreview extends Component {
   /**
-   * @contructor
-   * @param {object} props
-   */
-  constructor (props) {
-    super(props);
-    this.state = {
-      profileEnable: false,
-      showText: false
-    };
-  }
-
-  /**
-   * Show/hide profile when clicked
-   */
-  handleClick = () => {
-    this.setState({
-      profileEnable: !this.state.profileEnable
-    });
-  }
-
-  /**
-   * show text on mouse over
-   */
-  handleMouseEnter = () => {
-    this.setState({
-      showText: true
-    });
-  }
-
-  /**
-   * hide text on mouse over
-   */
-  handleMouseLeave = () => {
-    this.setState({
-      showText: false
-    });
-  }
-
-  /**
    * Render
    */
   render () {
@@ -77,7 +42,7 @@ class ProfilePreview extends Component {
 
     return (
       <Wrapper>
-        <Button onClick={this.handleClick} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+        <Button onClick={this.handleClick}>
           <AppContext.Consumer>
             {({ context }) => {
               let src = WebDevProfileSrc;

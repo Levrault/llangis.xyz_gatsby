@@ -7,22 +7,20 @@ import Title from '../commons/title';
  * Like in every video game, we land on the famous "press start screen"
  */
 const Home = () => (
-  <Content>
-    <div>
-      <Fade duration={1}>
-        <Fragment>
-          <Title><span>llangis.xyz</span></Title>
-          <p>
+  <div>
+    <Fade duration={1}>
+      <Fragment>
+        <Title><span>llangis.xyz</span></Title>
+        <p>
           Hi folks,
-          </p>
-          <p>
+        </p>
+        <p>
           I'm a front end developer and an amateur video game developer based in Paris, France.
-          </p>
-          <p>Feel free to read my articles event if the website is still in progress</p>
-        </Fragment>
-      </Fade>
-    </div>
-  </Content>
+        </p>
+        <p>Feel free to read my articles event if the website is still in progress</p>
+      </Fragment>
+    </Fade>
+  </div>
 );
 
 export default Home;
